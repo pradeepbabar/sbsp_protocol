@@ -1,25 +1,80 @@
-# topology.yml
+### File: topology.yml
+### ContainerLab topology for SBSP 6-router spine-leaf test lab
+###
+### Topology:
+###
+###          R1 (spine)       R2 (spine)
+###         / | \             / | \
+###        R3 R4  R5        R4  R5  R6
+###        |___________________|
+###              (east-west)
+###
+### Deploy:  sudo clab deploy --topo topology.yml
+### Destroy: sudo clab destroy --topo topology.yml
+### Exec:    sudo clab exec --topo topology.yml --node R1 "python -m sbsp.cli.show neighbors"
+
 name: sbsp-lab
 
+mgmt:
+  network: sbsp-mgmt
+  ipv4-subnet: 172.30.0.0/24
+
 topology:
+
   kinds:
     linux:
-      image: sbsp:latest   # your custom Docker image
+      image: sbsp:latest
+      env:
+        SBSP_LOG_LEVEL: INFO
+        SBSP_AREA: "0.0.0.0"
 
   nodes:
-    R1: {kind: linux}
-    R2: {kind: linux}
-    R3: {kind: linux}
-    R4: {kind: linux}
-    R5: {kind: linux}
-    R6: {kind: linux}
+    R1:
+      kind: linux
+      mgmt-ipv4: 172.30.0.11
+      env:
+        SBSP_ROUTER_ID: "10.0.0.1"
+
+    R2:
+      kind: linux
+      mgmt-ipv4: 172.30.0.12
+      env:
+        SBSP_ROUTER_ID: "10.0.0.2"
+
+    R3:
+      kind: linux
+      mgmt-ipv4: 172.30.0.13
+      env:
+        SBSP_ROUTER_ID: "10.0.0.3"
+
+    R4:
+      kind: linux
+      mgmt-ipv4: 172.30.0.14
+      env:
+        SBSP_ROUTER_ID: "10.0.0.4"
+
+    R5:
+      kind: linux
+      mgmt-ipv4: 172.30.0.15
+      env:
+        SBSP_ROUTER_ID: "10.0.0.5"
+
+    R6:
+      kind: linux
+      mgmt-ipv4: 172.30.0.16
+      env:
+        SBSP_ROUTER_ID: "10.0.0.6"
 
   links:
-    # Spine-leaf: R1+R2 are spine, R3-R6 are leaves
+    # R1 (spine) uplinks
     - endpoints: ["R1:eth1", "R3:eth1"]
     - endpoints: ["R1:eth2", "R4:eth1"]
     - endpoints: ["R1:eth3", "R5:eth1"]
+
+    # R2 (spine) uplinks
     - endpoints: ["R2:eth1", "R4:eth2"]
     - endpoints: ["R2:eth2", "R5:eth2"]
     - endpoints: ["R2:eth3", "R6:eth1"]
-    - endpoints: ["R3:eth2", "R6:eth2"]   # east-west link
+
+    # East-west leaf link
+    - endpoints: ["R3:eth2", "R6:eth2"]

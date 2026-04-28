@@ -1,0 +1,25 @@
+# topology.yml
+name: sbsp-lab
+
+topology:
+  kinds:
+    linux:
+      image: sbsp:latest   # your custom Docker image
+
+  nodes:
+    R1: {kind: linux}
+    R2: {kind: linux}
+    R3: {kind: linux}
+    R4: {kind: linux}
+    R5: {kind: linux}
+    R6: {kind: linux}
+
+  links:
+    # Spine-leaf: R1+R2 are spine, R3-R6 are leaves
+    - endpoints: ["R1:eth1", "R3:eth1"]
+    - endpoints: ["R1:eth2", "R4:eth1"]
+    - endpoints: ["R1:eth3", "R5:eth1"]
+    - endpoints: ["R2:eth1", "R4:eth2"]
+    - endpoints: ["R2:eth2", "R5:eth2"]
+    - endpoints: ["R2:eth3", "R6:eth1"]
+    - endpoints: ["R3:eth2", "R6:eth2"]   # east-west link
