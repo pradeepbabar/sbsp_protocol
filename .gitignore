@@ -1,0 +1,4 @@
+clab-sbsp-lab/topology-data.json
+clab-sbsp-lab/authorized_keys
+clab-sbsp-lab/.tls/ca/ca.pem
+clab-sbsp-lab/.tls/ca/ca.key
