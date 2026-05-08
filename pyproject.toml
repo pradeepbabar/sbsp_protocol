@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sbsp"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["pyroute2"]
+
+[project.scripts]
+sbspd     = "sbsp.daemon.main:main"
+sbsp-show = "sbsp.cli.show:main"
+
+[tool.setuptools.packages.find]
+include = ["sbsp*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths    = ["sbsp/tests"]

@@ -1,30 +1,30 @@
 FROM python:3.12-alpine
 
-# System dependencies
-RUN apk add --no-cache \
-    iproute2 \
-    tcpdump \
-    iputils \
-    busybox-extras \
-    && rm -rf /var/cache/apk/*
+RUN apk add --no-cache iproute2 tcpdump tini && rm -rf /var/cache/apk/*
 
-# Python dependencies
-RUN pip install --no-cache-dir \
-    pyroute2 \
-    pytest \
-    pytest-asyncio
+RUN pip install --no-cache-dir pyroute2
 
-# Copy entire project and install as a package
 WORKDIR /app
-COPY sbsp/       /app/sbsp/
-COPY setup.py    /app/setup.py
-COPY pytest.ini  /app/pytest.ini
 
-# Install sbsp package so `python -m sbsp.daemon.main` works from anywhere
-RUN pip install --no-cache-dir -e .
+# Copy the sbsp package
+COPY sbsp/ /app/sbsp/
 
-# Entry-point script reads env vars SBSP_ROUTER_ID, SBSP_AREA, SBSP_LOG_LEVEL
+# Show exactly what was copied - makes missing files obvious in build log
+RUN echo "=== Copied files ===" && find /app/sbsp -type f | sort
+
+# Ensure all __init__.py files exist (safety net if they were missing on host)
+#RUN touch /app/sbsp/__init__.py \
+#    && touch /app/sbsp/algo/__init__.py \
+#    && touch /app/sbsp/daemon/__init__.py \
+#    && touch /app/sbsp/cli/__init__.py
+
+# Set Python path so sbsp package is found
+ENV PYTHONPATH=/app
+
+# Verify import - build fails here if any source file is missing
+#RUN python -c "from sbsp.daemon.main import main; print('OK: import verified')"
+
 COPY docker-entrypoint.sh /app/
 RUN chmod +x /app/docker-entrypoint.sh
 
-ENTRYPOINT ["/app/docker-entrypoint.sh"]
+CMD ["/sbin/tini", "--", "sleep", "infinity"]

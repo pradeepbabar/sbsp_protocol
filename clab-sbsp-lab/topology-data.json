@@ -6,10 +6,9 @@
       "prefix": "clab",
       "mgmt": {
         "network": "sbsp-mgmt",
-        "bridge": "br-37a209e1ace0",
+        "bridge": "br-35edc9f6eab3",
         "ipv4-subnet": "172.30.0.0/24",
         "ipv4-gw": "172.30.0.1",
-        "ipv6-gw": "fe80::1c71:73ff:fe36:57f2",
         "external-access": true
       }
     }
@@ -34,8 +33,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R1",
@@ -67,8 +66,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R2",
@@ -100,8 +99,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R3",
@@ -133,8 +132,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R4",
@@ -166,8 +165,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R5",
@@ -199,8 +198,8 @@
       "mac-address": "",
       "labels": {
         "clab-git-branch": "main",
-        "clab-git-hash": "07ac014",
-        "clab-mgmt-net-bridge": "br-37a209e1ace0",
+        "clab-git-hash": "12eb95d",
+        "clab-mgmt-net-bridge": "br-35edc9f6eab3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/sarika/my_projects/sbsp_protocol/clab-sbsp-lab/R6",
@@ -221,13 +220,13 @@
         "a": {
           "node": "R1",
           "interface": "eth1",
-          "mac": "aa:c1:ab:27:93:cf",
+          "mac": "aa:c1:ab:b0:74:dd",
           "peer": "z"
         },
         "z": {
-          "node": "R3",
+          "node": "R2",
           "interface": "eth1",
-          "mac": "aa:c1:ab:c4:e0:da",
+          "mac": "aa:c1:ab:31:bb:87",
           "peer": "a"
         }
       }
@@ -237,13 +236,13 @@
         "a": {
           "node": "R1",
           "interface": "eth2",
-          "mac": "aa:c1:ab:9b:88:ea",
+          "mac": "aa:c1:ab:54:66:25",
           "peer": "z"
         },
         "z": {
-          "node": "R4",
+          "node": "R3",
           "interface": "eth1",
-          "mac": "aa:c1:ab:3f:fd:44",
+          "mac": "aa:c1:ab:20:c2:91",
           "peer": "a"
         }
       }
@@ -253,29 +252,13 @@
         "a": {
           "node": "R1",
           "interface": "eth3",
-          "mac": "aa:c1:ab:02:d9:72",
-          "peer": "z"
-        },
-        "z": {
-          "node": "R5",
-          "interface": "eth1",
-          "mac": "aa:c1:ab:69:5e:49",
-          "peer": "a"
-        }
-      }
-    },
-    {
-      "endpoints": {
-        "a": {
-          "node": "R2",
-          "interface": "eth1",
-          "mac": "aa:c1:ab:c1:2c:0b",
+          "mac": "aa:c1:ab:03:f4:a8",
           "peer": "z"
         },
         "z": {
           "node": "R4",
-          "interface": "eth2",
-          "mac": "aa:c1:ab:32:01:35",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:a5:70:cb",
           "peer": "a"
         }
       }
@@ -285,13 +268,13 @@
         "a": {
           "node": "R2",
           "interface": "eth2",
-          "mac": "aa:c1:ab:8d:ac:79",
+          "mac": "aa:c1:ab:bb:6d:c8",
           "peer": "z"
         },
         "z": {
           "node": "R5",
-          "interface": "eth2",
-          "mac": "aa:c1:ab:ec:47:3d",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:4f:b5:0f",
           "peer": "a"
         }
       }
@@ -301,13 +284,13 @@
         "a": {
           "node": "R2",
           "interface": "eth3",
-          "mac": "aa:c1:ab:c1:41:b0",
+          "mac": "aa:c1:ab:1d:75:e0",
           "peer": "z"
         },
         "z": {
           "node": "R6",
           "interface": "eth1",
-          "mac": "aa:c1:ab:b0:b4:27",
+          "mac": "aa:c1:ab:fd:71:c6",
           "peer": "a"
         }
       }
@@ -317,13 +300,29 @@
         "a": {
           "node": "R3",
           "interface": "eth2",
-          "mac": "aa:c1:ab:d8:6f:61",
+          "mac": "aa:c1:ab:56:5f:78",
+          "peer": "z"
+        },
+        "z": {
+          "node": "R5",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:73:75:a4",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "R4",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:0e:20:de",
           "peer": "z"
         },
         "z": {
           "node": "R6",
           "interface": "eth2",
-          "mac": "aa:c1:ab:7a:be:11",
+          "mac": "aa:c1:ab:7e:bd:d1",
           "peer": "a"
         }
       }
