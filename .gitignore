@@ -1,4 +1,42 @@
-clab-sbsp-lab/topology-data.json
-clab-sbsp-lab/authorized_keys
-clab-sbsp-lab/.tls/ca/ca.pem
-clab-sbsp-lab/.tls/ca/ca.key
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.eggs/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# ContainerLab runtime state — NEVER commit this
+clab-sbsp-lab/
+*.clab.yml.bak
+topology.yml.annotations.json
+
+# Secrets — double-check before committing
+*.pem
+*.key
+*.crt
+id_rsa
+id_ed25519
+.env
+.env.*
+secrets/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
