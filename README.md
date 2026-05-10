@@ -6,7 +6,7 @@ A novel link-state routing protocol that replaces Dijkstra's algorithm (used in 
 
 **Inspired by:** *"Breaking the Sorting Barrier for Directed Single-Source Shortest Paths"* — Ran Duan, Jiayi Mao, Xiao Mao, Xinkai Shu, Longhui Yin. STOC 2025 Best Paper. ([arXiv:2504.17033](https://arxiv.org/abs/2504.17033))
 
-**Built with:** Python 3.12 · asyncio · pyroute2 · ContainerLab · Docker · AI-assisted development (Claude by Anthropic)
+**Built with:** Python 3.12 · asyncio · pyroute2 · ContainerLab · Docker · AI-assisted development
 
 ---
 
