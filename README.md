@@ -170,9 +170,8 @@ sudo clab destroy --topo topology.yml --cleanup
 192.168.3/4/5/6.0/24 on each leaf router's loopback
 ```
 
+
 ![alt text](sbsp-algo.png)
-
-
 
 Each router owns a `192.168.X.0/24` subnet on a loopback interface (`lo1`). These are advertised via Prefix-LSAs and installed as routes on all other routers by the SBSP compute engine.
 
