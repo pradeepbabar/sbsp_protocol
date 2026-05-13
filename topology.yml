@@ -9,6 +9,7 @@ topology:
   kinds:
     linux:
       image: sbsp:latest
+      image-pull-policy: never
       env:
         SBSP_LOG_LEVEL: DEBUG
         SBSP_AREA: "0.0.0.0"
@@ -16,45 +17,52 @@ topology:
         - /app/docker-entrypoint.sh
 
   nodes:
+    # Spine routers
     R1:
       kind: linux
       mgmt-ipv4: 172.30.0.11
       env:
         SBSP_ROUTER_ID: "10.0.0.1"
+        SBSP_LOOPBACK:  "192.168.1.0/24"
 
     R2:
       kind: linux
       mgmt-ipv4: 172.30.0.12
       env:
         SBSP_ROUTER_ID: "10.0.0.2"
+        SBSP_LOOPBACK:  "192.168.2.0/24"
 
+    # Leaf routers
     R3:
       kind: linux
       mgmt-ipv4: 172.30.0.13
       env:
         SBSP_ROUTER_ID: "10.0.0.3"
+        SBSP_LOOPBACK:  "192.168.3.0/24"
 
     R4:
       kind: linux
       mgmt-ipv4: 172.30.0.14
       env:
         SBSP_ROUTER_ID: "10.0.0.4"
+        SBSP_LOOPBACK:  "192.168.4.0/24"
 
     R5:
       kind: linux
       mgmt-ipv4: 172.30.0.15
       env:
         SBSP_ROUTER_ID: "10.0.0.5"
+        SBSP_LOOPBACK:  "192.168.5.0/24"
 
     R6:
       kind: linux
       mgmt-ipv4: 172.30.0.16
       env:
         SBSP_ROUTER_ID: "10.0.0.6"
+        SBSP_LOOPBACK:  "192.168.6.0/24"
 
   links:
-    # NO explicit interface names - let ContainerLab auto-assign
-    # This avoids all "Link not found" race conditions
+    # Spine-leaf links (same as before, no interface name conflicts)
     - endpoints: ["R1:eth1", "R2:eth1"]
     - endpoints: ["R1:eth2", "R3:eth1"]
     - endpoints: ["R1:eth3", "R4:eth1"]
